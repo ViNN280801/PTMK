@@ -11,7 +11,7 @@ The application should have:
 1. Creating a table with fields representing full name, date of birth, gender. Application launch example:
 
 ```console
-   MyApp 1
+MyApp 1
 ```
 
 For php:
@@ -33,7 +33,10 @@ java myApp.jar 1
 ```
 
 2. Create a record. Use the following format:
-   MyApp 2 Full name Date of birth Gender
+
+```console
+MyApp 2 Full name Date of birth Gender
+```
 
 3. Output all lines with a unique value of FULL name + date, sorted by full name, output full name, Date of birth, gender, number of full years. Application launch example:
 
@@ -171,7 +174,7 @@ As you can see in screenshot below, user can't write anything to the fields of t
 <img src="screenshots/Mode_2.png">
 
 You can use [sqlite online viewer](https://sqliteonline.com/) to make online queries. Result of adding new person:
-<img src="screenshots/Mode_2_SQLite_viewer">
+<img src="screenshots/Mode_2_SQLite_viewer.png">
 
 Adding new person to also filled database:
 <img src="screenshots/Mode_2_2.png">
@@ -182,7 +185,12 @@ Adding new person to also filled database:
 
 #### Output of all rows with a unique value of fullname + date, sorted by fullname
 
-<img src="screenshots/Mode_3.png">
+```console
+./main 3
+```
+
+<img src="screenshots/Mode_3_1.png">
+<img src="screenshots/Mode_3_2.png">
 
 ### Mode 4
 
@@ -252,3 +260,41 @@ Execution time = 10.4508ms
 
 <img src="screenshots/Mode_6.png">
 <img src="screenshots/Mode_6_2.png">
+
+## Memory leaks
+
+Using [valgrind](https://valgrind.org) tool for check of any memory leaks or errors in a program:
+
+```console
+<loveit@fedora ПТМК>$ valgrind ./main 4
+==94080== Memcheck, a memory error detector
+==94080== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==94080== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==94080== Command: ./main 4
+==94080==
+Enter name of DB: db
+...
+98: generateRandomMaleWithSurnameStartsWithF(): Recording person: Fkv Lsvs Nhdobx -> SUCCESS
+99: generateRandomMaleWithSurnameStartsWithF(): Recording person: Frks Qz Odmdgil -> SUCCESS
+==94080==
+==94080== HEAP SUMMARY:
+==94080==     in use at exit: 0 bytes in 0 blocks
+==94080==   total heap usage: 152,328 allocs, 152,328 frees, 95,344,570 bytes allocated
+==94080==
+==94080== All heap blocks were freed -- no leaks are possible
+==94080==
+==94080== For lists of detected and suppressed errors, rerun with: -s
+==94080== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
+
+If you want to use valgrind with full check and with lists of errors, run following command:
+
+```console
+valgrind --leak-check=yes -s ./main 4
+```
+
+If you want to redirect valgrind checking to a file, use command below:
+
+```console
+valgrind --leak-check=yes -s --log-file="memory.log" ./main 4
+```
