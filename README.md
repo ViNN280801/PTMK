@@ -200,7 +200,7 @@ Adding new person to also filled database:
 
 ### Mode 5
 
-#### Результат выборки из таблицы по критерию: пол мужской, ФИО начинается с "F". Сделать замер времени выполнения.
+#### The result of the selection from the table according to the criterion: male gender, full name begins with "F". Make a measurement of the execution time.
 
 Mode 5 uses more complex and slowest SQL query with subquery:
 
