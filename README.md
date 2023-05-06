@@ -204,6 +204,8 @@ Adding new person to also filled database:
 
 Mode 5 uses more complex and slowest SQL query with subquery:
 
+SQL query:
+
 ```sql
 SELECT * FROM (SELECT *
                FROM Person
@@ -211,6 +213,8 @@ SELECT * FROM (SELECT *
                ORDER BY Sex DESC)
 WHERE Sex != 'F'
 ```
+
+SQL query in C++:
 
 ```cpp
 void DBmanip::printMalePersonWithSurnameFstLetterF()
@@ -236,11 +240,15 @@ Execution time = 27.7749ms
 
 To implement more quickly [method](https://www.bigscal.com/blogs/database-technology/top-10-tips-to-improve-sql-query-performance/), the simplest way is do not use '\*' in query, and simplify your sql query - write it without subexpressions and write as many restrictive conditions as possible, as follows:
 
+SQL query:
+
 ```sql
 SELECT ID, Surname, Name, Patronymic, Date_of_Birth, Sex
 FROM Person
 WHERE Sex == 'M' AND substr(Surname, 1, 1) == 'F'
 ```
+
+SQL query in C++:
 
 ```cpp
 void DBmanip::printMalePersonWithSurnameFstLetterF_quick()
