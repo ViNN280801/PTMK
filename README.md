@@ -1,5 +1,9 @@
 # ПТМК Test task
 
+## Project description
+
+This is a console application that works with 'main()' function arguments. Application uses [SQLite Database](https://sqlite.org/index.html) and their functions. [Download SQLite](https://sqlite.org/download.html). [Instructions to compile](https://www.sqlite.org/howtocompile.html). Class 'Peson' describes certain person with it attributes: Surname, Name, Patronymic, Date of Birth in format "%yyyy-%mm-%dd" and Sex, this class uses the [Rule of Five](https://en.cppreference.com/w/cpp/language/rule_of_three). Class 'DBmanip' represents database manipulator that can interoperate with sqlite3 data base: connecting to db, creating table, adding records, filling random records and others functionality.
+
 ## Task description
 
 Write a console application or php script that will run from the console. For each item, it must accept a command-line parameter and execute the corresponding item. There will be examples in the course of the task. Use English for the full name. There is no need to solve the problem with displaying the Russian language in the console, if it occurs. The application/script must connect to the database.

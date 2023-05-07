@@ -7,7 +7,7 @@
 #include "sqlite-amalgamation-3071300/sqlite3.h"
 #include "../include/person.hpp"
 
-/// @brief Class represents data base manipulator
+/// @brief Class represents database manipulator
 /// that can interoperate with sqlite3 data base:
 /// connecting to db, creating table, adding records,
 /// filling random records and others functionality
