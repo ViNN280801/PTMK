@@ -273,6 +273,49 @@ Execution time = 10.4508ms
 <img src="screenshots/Mode_6.png">
 <img src="screenshots/Mode_6_2.png">
 
+## Dockerfile
+
+### Build Dockerfile
+
+```console
+sudo systemctl start docker
+sudo docker login
+sudo docker pull alpine:latest
+sudo docker build -t console_app .
+```
+
+Output:
+
+```console
+<loveit@fedora ПТМК>$ sudo docker build -t console_app .
+[+] Building 38.2s (12/12) FINISHED
+ => [internal] load .dockerignore                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                   0.0s
+ => [internal] load build definition from Dockerfile                                                                              0.1s
+ => => transferring dockerfile: 317B                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                  0.0s
+ => [internal] load build context                                                                                                 0.0s
+ => => transferring context: 21.72kB                                                                                              0.0s
+ => CACHED [console_app 1/5] FROM docker.io/library/alpine                                                                        0.0s
+ => CACHED [console_app 2/5] RUN apk add build-base cmake make                                                                    0.0s
+ => CACHED [console_app 3/5] WORKDIR /app                                                                                         0.0s
+ => [console_app 4/5] COPY . .                                                                                                    0.3s
+ => [console_app 5/5] RUN cmake . &&     cmake --build .                                                                         37.0s
+ => [stage-1 2/3] COPY --from=console_app /app /app                                                                               0.1s
+ => [stage-1 3/3] WORKDIR /app                                                                                                    0.2s
+ => exporting to image                                                                                                            0.2s
+ => => exporting layers                                                                                                           0.2s
+ => => writing image sha256:6392767b84f5d1501c6adc53712755c445e433dab6c20fc6b10093a6d1ae2f7c                                      0.0s
+ => => naming to docker.io/library/console_app                                                                                    0.0s
+<loveit@fedora ПТМК>$
+```
+
+Command to run docker container:
+
+```console
+sudo docker container run console_app:latest
+```
+
 ## Memory leaks
 
 Using [valgrind](https://valgrind.org) tool for check of any memory leaks or errors in a program:
